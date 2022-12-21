@@ -1,0 +1,12 @@
+.card-inner{
+  
+    &__technologies{
+        width:20%;
+        display: flex;
+        align-items: flex-end;
+    }
+    &__technologies-item{
+        width: 30%;
+        display: flex;
+    }
+}
