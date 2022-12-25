@@ -1,12 +1,12 @@
 .card-inner{
   
     &__technologies{
-        width:20%;
         display: flex;
-        align-items: flex-end;
+        flex-direction: column;
     }
     &__technologies-item{
         width: 30%;
         display: flex;
+        margin-right: 5px;
     }
 }
