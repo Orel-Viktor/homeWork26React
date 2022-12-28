@@ -1,11 +1,12 @@
 import {Card} from './Card'
 
-function App() {
+ function App() {
   return (
     <div className="App">
-      <Card userName="Viktor" lastname="Orel" technologies={['React','Babel','WebPack']}></Card>
+      <Card userName="Viktor" lastname="Orel"></Card>
     </div>
   );
 }
 
-export default App;
+
+export default App
