@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 // export class Card extends React.Component {
 //   constructor(props) {
@@ -54,30 +54,42 @@ import React, { useState } from "react";
 // }
 
 
-export function Card() {
-  const [technologies, setTech] = useState(['React', 'Babel', 'WebPack'])
+export function Card(props) {
+  const { userName, lastName } = props
+  const [technologies, setTechnologies] = useState(['React', 'Babel', 'WebPack'])
+  const inputTechnologiesEL = useRef(null)
+  const techItem = useRef(null)
 
-  const addTech = (event) => {
+
+  const addTechhologies = (event) => {
     event.preventDefault()
-    const tech = event.target[0].value
-    setTech(technologies.push(tech))
-    event.target[0].value = ''
+    const tech = inputTechnologiesEL.current.value
+    setTechnologies([...technologies, tech])
+    inputTechnologiesEL.current.value = ''
   }
-  return (
 
+  useEffect(() => {
+    techItem.current.style.background = "blue"
+  })
+
+
+  return (
     <div className="card-inner">
-      <div className="card-inner__username">Name: </div>
-      <div className="card-inner__lastname">Last Name:</div>
+      <div className="card-inner__username">Name:{userName} </div>
+      <div className="card-inner__lastname">Last Name:{lastName}</div>
       <form
         action="#"
         className="card-inner__form js--form"
-        onSubmit={addTech}
+        onSubmit={addTechhologies}
       >
-        <input type="text" className="js--form"></input>
+        <input ref={inputTechnologiesEL} type="text" className="js--form"></input>
         <button>добавить</button>
       </form>
       <div className="card-inner__technologies">
-        Learned Technologies :{technologies}</div>
+        Learned Technologies :{technologies.map((tech, i) => (
+          <div ref={techItem} className="card-inner__technologies-item" key={tech + i}>{tech}</div>
+        ))}
+      </div>
     </div>
 
 
