@@ -62,7 +62,6 @@ export function Card() {
     const tech = event.target[0].value
     setTech(technologies.push(tech))
     event.target[0].value = ''
-    console.log(technologies)
   }
   return (
 
