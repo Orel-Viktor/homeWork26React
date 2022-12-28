@@ -6,6 +6,8 @@ export class Card extends React.Component {
     this.state = {
       technologies: props.technologies,
     };
+    console.log(...this.state.technologies)
+    console.log(props.technologies)
   }
 
   addItem = (event) => {
