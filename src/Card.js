@@ -59,6 +59,7 @@ export function Card(props) {
   const [technologies, setTechnologies] = useState(['React', 'Babel', 'WebPack'])
   const inputTechnologiesEL = useRef(null)
   const techItem = useRef(null)
+  console.log(techItem)
 
 
   const addTechhologies = (event) => {
@@ -69,7 +70,7 @@ export function Card(props) {
   }
 
   useEffect(() => {
-    techItem.current.style.background = "blue"
+    techItem.current.filter((item,i) =>item[i] === i>0).style.background = "red"
   })
 
 
