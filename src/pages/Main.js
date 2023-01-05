@@ -11,7 +11,7 @@ export function Main() {
     }
     return (
             <main>
-                <Button onClick={handleError} buttonValue="Установить ошибку"></Button>
+                <Button onClick={handleError} >Уставить ошибку</Button>
                 <span>{error ? error : null} </span>
                 <Card userName="Viktor" lastName="Orel" ></Card>
             </main>
