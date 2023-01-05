@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export function Main() {
     const [error, setError] = useState(false);
-    function  handleError () {
+    const handleError = () => {
         setError({ value: 112 })
       
     }

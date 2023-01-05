@@ -1,18 +1,26 @@
 import React, { useState, useRef } from "react";
+import { Button } from "./components/Button";
 
 export function Card(props) {
   const { userName, lastName } = props
   const [technologies, setTechnologies] = useState(['React', 'Babel', 'WebPack'])
-  const inputTechnologiesEL = useRef(null)
+  const inputTechnologiesEl = useRef(null)
+  const buttonAddTechnologies = useRef(null)
   const techItem = useRef(null)
 
   const addTechhologies = (event) => {
     event.preventDefault()
-    const tech = inputTechnologiesEL.current.value
+    const tech = inputTechnologiesEl.current.value
     setTechnologies([...technologies, tech])
-    inputTechnologiesEL.current.value = ''
+    inputTechnologiesEl.current.value = ''
   }
-
+  const amountValidation = () => {
+    const regAmount = /.{5}/;
+    let resAmount = inputTechnologiesEl.current.value.match(regAmount);
+    if (resAmount) {
+      buttonAddTechnologies.style.disabled
+    }
+  }
 
 
   return (
@@ -24,8 +32,10 @@ export function Card(props) {
         className="card-inner__form js--form"
         onSubmit={addTechhologies}
       >
-        <input ref={inputTechnologiesEL} type="text" className="js--form"></input>
-        <button>добавить</button>
+        <label htmlFor="tech">Введите значение:</label>
+        <input onChange={amountValidation} ref={inputTechnologiesEl} type="text" className="js--form" id="tech"></input>
+        <button disabled ref={buttonAddTechnologies}>добавить</button>
+        {/* <Button  buttonValue="Добавить"></Button> */}
       </form>
       <div className="card-inner__technologies">
         Learned Technologies :{technologies.map((tech, i) => (
