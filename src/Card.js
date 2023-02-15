@@ -10,14 +10,13 @@ export function Card(props) {
   ]);
   const [inputValue, setValue] = useState("");
   const [disabled, setDisabled] = useState(true);
-  const inputTechnologiesEl = useRef(null);
-  const techItem = useRef(null);
+  
 
   const addTechhologies = (event) => {
     event.preventDefault();
-    const tech = inputTechnologiesEl.current.value;
+    const tech = inputValue;
     setTechnologies([...technologies, tech]);
-    inputTechnologiesEl.current.value = "";
+    setValue("");
   };
 
   const hadleInput = (e) => setValue(e.target.value);
@@ -41,7 +40,6 @@ export function Card(props) {
         <input
           value={inputValue}
           onChange={hadleInput}
-          ref={inputTechnologiesEl}
           type="text"
           className="js--form"
           id="tech"
@@ -52,7 +50,6 @@ export function Card(props) {
         Learned Technologies :
         {technologies.map((tech, i) => (
           <div
-            ref={techItem}
             className="card-inner__technologies-item"
             key={tech + i}
           >
